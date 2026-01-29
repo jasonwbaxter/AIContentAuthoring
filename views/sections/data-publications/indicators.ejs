@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('../../_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <!-- Main Content -->
+      <main class="content full-width">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/data-publications">Data & Publications</a>
+          <span class="separator">/</span>
+          <span aria-current="page">Indicators</span>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="section-hero">
+          <h1>Economic Indicators</h1>
+          <p>Live economic and financial indicators with the latest data</p>
+        </div>
+
+        <!-- Indicators Grid -->
+        <section class="indicators-section">
+          <h2>Key Indicators</h2>
+          
+          <div class="indicators-grid">
+            <% if (indicators && indicators.length > 0) { %>
+              <% indicators.forEach(indicator => { %>
+                <div class="indicator-tile">
+                  <div class="indicator-header">
+                    <h3><%= indicator.label %></h3>
+                    <span class="indicator-unit">(<%= indicator.unit %>)</span>
+                  </div>
+                  
+                  <div class="indicator-value">
+                    <%= indicator.value %>
+                  </div>
+                  
+                  <div class="indicator-footer">
+                    <span class="last-updated">
+                      Updated: <time datetime="<%= indicator.lastUpdated.toISOString() %>">
+                        <%= indicator.lastUpdated.toLocaleDateString() %>
+                      </time>
+                    </span>
+                    <span class="indicator-source">
+                      Source: <%= indicator.source %>
+                    </span>
+                  </div>
+                  
+                  <a href="#" class="indicator-download" aria-label="Download <%= indicator.label %> data">
+                    📥 Download
+                  </a>
+                </div>
+              <% }); %>
+            <% } %>
+          </div>
+        </section>
+
+        <!-- Indicators Table (Accessible Alternative) -->
+        <section class="indicators-table-section">
+          <h2>Indicators Table</h2>
+          <p class="table-description">
+            Complete list of economic indicators in tabular format for detailed comparison and analysis.
+          </p>
+          
+          <div class="table-responsive">
+            <table class="indicators-table" role="table">
+              <thead>
+                <tr>
+                  <th scope="col">Indicator</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Last Updated</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (indicators && indicators.length > 0) { %>
+                  <% indicators.forEach(indicator => { %>
+                    <tr>
+                      <td><strong><%= indicator.label %></strong></td>
+                      <td class="value"><%= indicator.value %></td>
+                      <td><%= indicator.unit %></td>
+                      <td>
+                        <time datetime="<%= indicator.lastUpdated.toISOString() %>">
+                          <%= indicator.lastUpdated.toLocaleDateString() %>
+                        </time>
+                      </td>
+                      <td><%= indicator.source %></td>
+                      <td>
+                        <a href="#" class="btn-small">Download</a>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Additional Information -->
+        <section class="indicators-info">
+          <h2>About These Indicators</h2>
+          
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>CPI - Consumer Price Index</h3>
+              <p>
+                Measures the average change in prices paid by consumers for goods and services. 
+                Published monthly by Statistics South Africa. Base year: 2010=100.
+              </p>
+              <a href="#">Learn more →</a>
+            </div>
+
+            <div class="info-card">
+              <h3>Repo Rate</h3>
+              <p>
+                The interest rate set by the South African Reserve Bank's Monetary Policy Committee. 
+                Used as the benchmark for short-term interest rates in the economy.
+              </p>
+              <a href="#">Learn more →</a>
+            </div>
+
+            <div class="info-card">
+              <h3>Exchange Rate</h3>
+              <p>
+                The value of the South African Rand relative to the US Dollar. 
+                Reflects demand and supply dynamics in foreign exchange markets.
+              </p>
+              <a href="#">Learn more →</a>
+            </div>
+
+            <div class="info-card">
+              <h3>ZARONIA Rate</h3>
+              <p>
+                The Johannesburg Interbank Average Rate (JIBAR) for overnight transactions. 
+                Key reference rate for money market operations.
+              </p>
+              <a href="#">Learn more →</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Data Downloads -->
+        <section class="data-downloads">
+          <h2>Download Indicators Data</h2>
+          <p>Export all indicators in machine-readable formats:</p>
+          
+          <div class="download-buttons">
+            <a href="#" class="btn btn-primary">📊 Download as CSV</a>
+            <a href="#" class="btn btn-secondary">📈 Download as JSON</a>
+            <a href="#" class="btn btn-secondary">📑 Download as XLSX</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <%- include('../../_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "site": {
+    "title": "AI Content Authoring",
+    "description": "A showcase of an AI augmented Content Authoring Process",
+    "baseUrl": "http://localhost:3000",
+    "author": "Your Name",
+    "year": 2026
+  },
+  "branding": {
+    "logo": "AI Content Authoring",
+    "primaryColor": "#0078d4",
+    "secondaryColor": "#107c10",
+    "accentColor": "#ffc20e",
+    "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+  },
+  "content": {
+    "baseDir": "./www",
+    "languages": ["EN-US", "PT", "ARF"],
+    "defaultLanguage": "EN-US"
+  },
+  "server": {
+    "port": 3000,
+    "host": "localhost"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <%- include('../../_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+    <div class="main-wrapper">
+      <main class="content full-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/about/">About</a>
+          <span class="separator">/</span>
+          <span aria-current="page"><%= title %></span>
+        </nav>
+        <div class="section-hero">
+          <h1><%= title %></h1>
+        </div>
+        <section class="content-section">
+          <p>Content for the <%= title %> section is being developed.</p>
+        </section>
+      </main>
+    </div>
+    <%- include('../../_footer') %>
+  </div>
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

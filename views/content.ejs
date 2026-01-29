@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank Content Portal</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/content.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header with Mega Menu -->
+    <%- include('_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <nav class="main-menu">
+          <!-- Main navigation links -->
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="content">
+        <!-- Breadcrumb -->
+        <% if (breadcrumb && breadcrumb.length > 0) { %>
+          <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <% breadcrumb.forEach(crumb => { %>
+              <span class="separator">/</span>
+              <span><%= crumb %></span>
+            <% }); %>
+          </nav>
+        <% } %>
+
+        <!-- Page Title -->
+        <article class="article">
+          <div class="article-header">
+            <h1 class="article-title"><%= title %></h1>
+            
+            <!-- AI Tools Bar -->
+            <div class="ai-tools">
+              <button id="summarizeBtn" class="ai-button" title="Generate AI summary of this article">
+                ✨ Summarize with AI
+              </button>
+              <button id="audioRecapBtn" class="ai-button" title="Generate audio recap of this article">
+                🎵 Audio Recap
+              </button>
+            </div>
+
+            <!-- AI Summary Panel (Hidden by default) -->
+            <div id="summaryPanel" class="ai-panel" style="display: none;">
+              <div class="ai-panel-header">
+                <h3>AI Summary</h3>
+                <button class="close-btn" onclick="document.getElementById('summaryPanel').style.display='none'">✕</button>
+              </div>
+              <div id="summaryContent" class="ai-panel-content">
+                <p>Loading summary...</p>
+              </div>
+            </div>
+
+            <!-- Audio Recap Panel (Hidden by default) -->
+            <div id="audioPanel" class="ai-panel" style="display: none;">
+              <div class="ai-panel-header">
+                <h3>Audio Recap</h3>
+                <button class="close-btn" onclick="document.getElementById('audioPanel').style.display='none'">✕</button>
+              </div>
+              <div id="audioContent" class="ai-panel-content">
+                <p>Generating audio...</p>
+                <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Article Content -->
+          <div class="article-body">
+            <%- html %>
+          </div>
+
+          <!-- Article Footer -->
+          <footer class="article-footer">
+            <p class="last-updated">Last updated: <%= new Date().toLocaleDateString() %></p>
+          </footer>
+        </article>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <%- include('_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+  <script>
+    // Set language for AI features
+    const currentLang = '<%= lang %>';
+    
+    // Summarize with AI
+    document.getElementById('summarizeBtn').addEventListener('click', async function() {
+      const content = document.querySelector('.article-body').innerText;
+      const summaryPanel = document.getElementById('summaryPanel');
+      const summaryContent = document.getElementById('summaryContent');
+      
+      summaryPanel.style.display = 'block';
+      summaryContent.innerHTML = '<p>Generating summary...</p>';
+      
+      try {
+        const response = await fetch('/api/summarize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content, language: currentLang })
+        });
+        
+        const data = await response.json();
+        summaryContent.innerHTML = '<p>' + data.summary + '</p>';
+      } catch (error) {
+        summaryContent.innerHTML = '<p style="color: red;">Error generating summary: ' + error.message + '</p>';
+      }
+    });
+    
+    // Audio Recap
+    document.getElementById('audioRecapBtn').addEventListener('click', async function() {
+      const content = document.querySelector('.article-body').innerText;
+      const audioPanel = document.getElementById('audioPanel');
+      const audioContent = document.getElementById('audioContent');
+      const audioPlayer = document.getElementById('audioPlayer');
+      
+      audioPanel.style.display = 'block';
+      audioContent.innerHTML = '<p>Generating audio recap...</p>';
+      
+      try {
+        const response = await fetch('/api/audio-recap', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: content, language: currentLang })
+        });
+        
+        const data = await response.json();
+        audioContent.innerHTML = '<p>Audio recap ready</p>';
+        audioPlayer.src = data.audioUrl;
+      } catch (error) {
+        audioContent.innerHTML = '<p style="color: red;">Error generating audio: ' + error.message + '</p>';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('../../_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <!-- Main Content -->
+      <main class="content full-width">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/data-publications">Data & Publications</a>
+          <span class="separator">/</span>
+          <span aria-current="page">Publications</span>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="section-hero">
+          <h1>Publications</h1>
+          <p>Central bank reports, bulletins, and research papers</p>
+        </div>
+
+        <!-- Filter Section -->
+        <aside class="filter-panel">
+          <h2>Filter Publications</h2>
+          
+          <fieldset class="filter-group">
+            <legend>Type</legend>
+            <label class="checkbox-label">
+              <input type="checkbox" name="type" value="bulletin" <%= filters.type === 'bulletin' ? 'checked' : '' %>>
+              <span>Quarterly Bulletin</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="type" value="policy" <%= filters.type === 'policy' ? 'checked' : '' %>>
+              <span>Policy Documents</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="type" value="research" <%= filters.type === 'research' ? 'checked' : '' %>>
+              <span>Research Papers</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="type" value="report" <%= filters.type === 'report' ? 'checked' : '' %>>
+              <span>Reports</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="type" value="statement" <%= filters.type === 'statement' ? 'checked' : '' %>>
+              <span>Statements</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend>Year</legend>
+            <label class="checkbox-label">
+              <input type="checkbox" name="year" value="2026" <%= filters.year === '2026' ? 'checked' : '' %>>
+              <span>2026</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="year" value="2025" <%= filters.year === '2025' ? 'checked' : '' %>>
+              <span>2025</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="year" value="2024" <%= filters.year === '2024' ? 'checked' : '' %>>
+              <span>2024</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="year" value="2023" <%= filters.year === '2023' ? 'checked' : '' %>>
+              <span>2023</span>
+            </label>
+          </fieldset>
+
+          <button class="reset-filters">Reset Filters</button>
+        </aside>
+
+        <!-- Publications List -->
+        <section class="publications-section">
+          <div class="results-info">
+            <p>Showing publications <span id="count">1–10</span> of <span id="total">150</span></p>
+          </div>
+
+          <div class="publications-list">
+            <!-- Sample Publications -->
+            <article class="publication-card">
+              <div class="pub-meta">
+                <span class="pub-type">Bulletin</span>
+                <time>January 2026</time>
+              </div>
+              <h3><a href="/content/EN/quarterly-bulletin-q4-2025.md">Quarterly Bulletin Q4 2025</a></h3>
+              <p class="pub-description">
+                Comprehensive analysis of monetary policy stance, inflation developments, and financial stability considerations for the final quarter of 2025.
+              </p>
+              <div class="pub-actions">
+                <a href="/files/quarterly-bulletin-q4-2025.pdf" class="pub-link pdf">📄 PDF (2.5 MB)</a>
+                <a href="/content/EN/quarterly-bulletin-q4-2025.md" class="pub-link html">🌐 View Online</a>
+              </div>
+            </article>
+
+            <article class="publication-card">
+              <div class="pub-meta">
+                <span class="pub-type">Policy Document</span>
+                <time>December 2025</time>
+              </div>
+              <h3><a href="#">Monetary Policy Framework Review</a></h3>
+              <p class="pub-description">
+                Review of the central bank's monetary policy framework and operational procedures for 2026.
+              </p>
+              <div class="pub-actions">
+                <a href="#" class="pub-link pdf">📄 PDF (1.8 MB)</a>
+              </div>
+            </article>
+
+            <article class="publication-card">
+              <div class="pub-meta">
+                <span class="pub-type">Report</span>
+                <time>November 2025</time>
+              </div>
+              <h3><a href="#">Financial Stability Review 2025</a></h3>
+              <p class="pub-description">
+                Detailed assessment of systemic risks, vulnerabilities, and the resilience of South Africa's financial system.
+              </p>
+              <div class="pub-actions">
+                <a href="#" class="pub-link pdf">📄 PDF (3.2 MB)</a>
+                <a href="#" class="pub-link html">🌐 View Online</a>
+                <a href="#" class="pub-link data">📊 Data (XLSX)</a>
+              </div>
+            </article>
+
+            <article class="publication-card">
+              <div class="pub-meta">
+                <span class="pub-type">Research Paper</span>
+                <time>October 2025</time>
+              </div>
+              <h3><a href="#">Exchange Rate Pass-Through to Domestic Inflation</a></h3>
+              <p class="pub-description">
+                Empirical analysis of how exchange rate movements transmit to domestic inflation in South Africa.
+              </p>
+              <div class="pub-actions">
+                <a href="#" class="pub-link pdf">📄 PDF (1.5 MB)</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="pagination" aria-label="Pagination">
+            <a href="#" class="page-link prev" aria-label="Previous page">← Previous</a>
+            <span class="page-info">Page 1 of 15</span>
+            <a href="#" class="page-link next">Next →</a>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <%- include('../../_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

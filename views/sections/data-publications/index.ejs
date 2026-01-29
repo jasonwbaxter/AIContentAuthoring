@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('../../_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <!-- Main Content -->
+      <main class="content full-width">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <span aria-current="page">Data & Publications</span>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="section-hero">
+          <h1>Data & Publications</h1>
+          <p>Access central bank data, publications, and economic indicators</p>
+        </div>
+
+        <!-- Quick Links to Subsections -->
+        <div class="section-grid">
+          <a href="/data-publications/publications" class="section-card">
+            <div class="card-icon">📄</div>
+            <h3>Publications</h3>
+            <p>Reports, bulletins, and research papers</p>
+            <span class="arrow">→</span>
+          </a>
+
+          <a href="/data-publications/data-hub" class="section-card">
+            <div class="card-icon">📊</div>
+            <h3>Data Hub</h3>
+            <p>Organized economic and financial data</p>
+            <span class="arrow">→</span>
+          </a>
+
+          <a href="/data-publications/indicators" class="section-card">
+            <div class="card-icon">📈</div>
+            <h3>Indicators</h3>
+            <p>Live economic indicators and rates</p>
+            <span class="arrow">→</span>
+          </a>
+
+          <a href="/data-publications/downloads" class="section-card">
+            <div class="card-icon">⬇️</div>
+            <h3>Download Centre</h3>
+            <p>Download datasets and publications</p>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <!-- Featured Content -->
+        <section class="featured-section">
+          <h2>Latest Publications</h2>
+          <div class="publication-list">
+            <article class="publication-item">
+              <time>January 2026</time>
+              <h3><a href="#">Monetary Policy Decision</a></h3>
+              <p>Summary of the latest Monetary Policy Committee decision and outlook.</p>
+              <a href="#" class="read-more">Read more →</a>
+            </article>
+
+            <article class="publication-item">
+              <time>December 2025</time>
+              <h3><a href="#">Financial Stability Review</a></h3>
+              <p>Assessment of risks and vulnerabilities in South Africa's financial system.</p>
+              <a href="#" class="read-more">Read more →</a>
+            </article>
+
+            <article class="publication-item">
+              <time>November 2025</time>
+              <h3><a href="#">Quarterly Bulletin</a></h3>
+              <p>Comprehensive analysis of economic and financial developments.</p>
+              <a href="#" class="read-more">Read more →</a>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <%- include('../../_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

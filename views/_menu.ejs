@@ -1,0 +1,25 @@
+<ul class="menu-list">
+  <% menu.forEach(item => { %>
+    <% if (item.isDirectory) { %>
+      <li class="menu-item menu-directory">
+        <details class="submenu-toggle">
+          <summary class="menu-label">
+            <%= item.label %>
+            <span class="toggle-icon">▶</span>
+          </summary>
+          <ul class="submenu">
+            <% if (item.submenu && item.submenu.length > 0) { %>
+              <%-  include('_menu', { menu: item.submenu }) %>
+            <% } %>
+          </ul>
+        </details>
+      </li>
+    <% } else if (item.isFile) { %>
+      <li class="menu-item menu-file">
+        <a href="<%= item.url %>" class="menu-link">
+          📄 <%= item.label.split('/').pop() %>
+        </a>
+      </li>
+    <% } %>
+  <% }); %>
+</ul>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitemap - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+  <style>
+    .sitemap-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #003d7a;
+    }
+    .section-hero p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    .sitemap-section {
+      margin-bottom: 2rem;
+    }
+    .sitemap-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #003d7a;
+      border-bottom: 2px solid #003d7a;
+      padding-bottom: 0.5rem;
+    }
+    .sitemap-list {
+      list-style: none;
+      padding: 0;
+    }
+    .sitemap-list li {
+      padding: 0.5rem 0;
+    }
+    .sitemap-list a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .sitemap-list a:hover {
+      color: #003d7a;
+      text-decoration: underline;
+    }
+    .sitemap-list li.indent-1 {
+      margin-left: 2rem;
+    }
+    .sitemap-list li.indent-2 {
+      margin-left: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <%- include('_header', { navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <main class="content">
+        <div class="section-hero">
+          <h1>Site Map</h1>
+          <p>Browse all sections and pages of the Central Bank website</p>
+        </div>
+
+        <div class="sitemap-container">
+          <!-- Home -->
+          <div class="sitemap-section">
+            <h2>Home</h2>
+            <ul class="sitemap-list">
+              <li><a href="/">Homepage</a></li>
+            </ul>
+          </div>
+
+          <!-- About Section -->
+          <div class="sitemap-section">
+            <h2>About</h2>
+            <ul class="sitemap-list">
+              <li><a href="/about">About Us</a></li>
+              <li class="indent-1"><a href="/about/mandate">Our Mandate</a></li>
+              <li class="indent-1"><a href="/about/governance">Governance</a></li>
+              <li class="indent-1"><a href="/about/policies">Policies & Compliance</a></li>
+              <li class="indent-1"><a href="/about/careers">Careers</a></li>
+            </ul>
+          </div>
+
+          <!-- Monetary Policy Section -->
+          <div class="sitemap-section">
+            <h2>Monetary Policy & Markets</h2>
+            <ul class="sitemap-list">
+              <li><a href="/monetary-policy">Monetary Policy</a></li>
+              <li class="indent-1"><a href="/monetary-policy/repo-mpc">Repo & MPC</a></li>
+              <li class="indent-1"><a href="/monetary-policy/market-ops">Market Operations</a></li>
+              <li class="indent-1"><a href="/monetary-policy/rates">Interest Rates</a></li>
+            </ul>
+          </div>
+
+          <!-- Data & Publications Section -->
+          <div class="sitemap-section">
+            <h2>Data & Publications</h2>
+            <ul class="sitemap-list">
+              <li><a href="/data-publications">Data & Publications Hub</a></li>
+              <li class="indent-1"><a href="/data-publications/publications">Publications</a></li>
+              <li class="indent-2"><a href="/data-publications/publications?type=bulletin">Bulletins</a></li>
+              <li class="indent-2"><a href="/data-publications/publications?type=policy">Policy Documents</a></li>
+              <li class="indent-2"><a href="/data-publications/publications?type=research">Research Reports</a></li>
+              <li class="indent-1"><a href="/data-publications/data-hub">Data Hub</a></li>
+              <li class="indent-2"><a href="/data-publications/data-hub#money-banking">Money & Banking</a></li>
+              <li class="indent-2"><a href="/data-publications/data-hub#capital-market">Capital Market</a></li>
+              <li class="indent-2"><a href="/data-publications/data-hub#financial-accounts">Financial Accounts</a></li>
+              <li class="indent-2"><a href="/data-publications/data-hub#public-finance">Public Finance</a></li>
+              <li class="indent-1"><a href="/data-publications/indicators">Key Indicators</a></li>
+              <li class="indent-1"><a href="/data-publications/downloads">Download Centre</a></li>
+            </ul>
+          </div>
+
+          <!-- News & Media Section -->
+          <div class="sitemap-section">
+            <h2>News & Media</h2>
+            <ul class="sitemap-list">
+              <li><a href="/news">News & Media</a></li>
+              <li class="indent-1"><a href="/news/newsroom">Newsroom</a></li>
+              <li class="indent-1"><a href="/news/speeches">Speeches</a></li>
+              <li class="indent-1"><a href="/news/press-kits">Press Kits</a></li>
+            </ul>
+          </div>
+
+          <!-- Help & Contact Section -->
+          <div class="sitemap-section">
+            <h2>Help & Contact</h2>
+            <ul class="sitemap-list">
+              <li><a href="/help">Help Center</a></li>
+              <li class="indent-1"><a href="/help/contact">Contact Us</a></li>
+              <li class="indent-1"><a href="/help/faq">FAQs</a></li>
+              <li class="indent-1"><a href="/help/forms">Forms & Applications</a></li>
+              <li class="indent-1"><a href="/help/whistleblowing">Whistleblowing</a></li>
+              <li class="indent-1"><a href="/help/fraud-scams">Report Fraud & Scams</a></li>
+              <li class="indent-1"><a href="/help/browsers">Supported Browsers</a></li>
+            </ul>
+          </div>
+
+          <!-- Policies & Legal Section -->
+          <div class="sitemap-section">
+            <h2>Policies & Legal</h2>
+            <ul class="sitemap-list">
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/paia">PAIA Manual</a></li>
+              <li><a href="/cookies">Cookie Policy</a></li>
+              <li><a href="/disclaimer">Disclaimer</a></li>
+            </ul>
+          </div>
+
+          <!-- External Links Section -->
+          <div class="sitemap-section">
+            <h2>Other Resources</h2>
+            <ul class="sitemap-list">
+              <li><a href="<%= navigation.footer.links.extranets.url %>" target="_blank" rel="noopener"><%= navigation.footer.links.extranets.label %></a></li>
+              <li><a href="<%= navigation.footer.links.internetBanking.url %>" target="_blank" rel="noopener"><%= navigation.footer.links.internetBanking.label %></a></li>
+              <li><a href="<%= navigation.footer.links.procurement.url %>" target="_blank" rel="noopener"><%= navigation.footer.links.procurement.label %></a></li>
+              <li><a href="/sitemap.xml">XML Sitemap</a></li>
+            </ul>
+          </div>
+
+          <!-- Accessibility -->
+          <div class="sitemap-section">
+            <h2>Accessibility</h2>
+            <ul class="sitemap-list">
+              <li><a href="#help/browsers">Browser Support</a></li>
+              <li><p style="margin: 0.5rem 0; color: #666;">This site is designed to be accessible to all users. Use keyboard navigation with Tab key to browse, and screen readers are fully supported.</p></li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <%- include('_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!-- Global Header with Mega Menu -->
+<header class="header header-main">
+  <div class="header-content">
+    <div class="logo-section">
+      <h1 class="logo">
+        <a href="/">🏦 Central Bank</a>
+      </h1>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <% if (navigation && navigation.length > 0) { %>
+          <% navigation.forEach(item => { %>
+            <div class="nav-item mega-menu-trigger">
+              <a href="<%= item.path %>" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                <%= item.label %>
+                <span class="caret">▼</span>
+              </a>
+              
+              <!-- Mega Menu Panel -->
+              <div class="mega-menu" role="menu" aria-label="<%= item.label %> submenu">
+                <div class="mega-menu-content">
+                  <% if (item.submenu && item.submenu.length > 0) { %>
+                    <div class="mega-menu-grid">
+                      <% item.submenu.forEach(sub => { %>
+                        <a href="<%= sub.path %>" class="mega-menu-item" role="menuitem">
+                          <span class="menu-icon"><%= sub.icon %></span>
+                          <span class="menu-label"><%= sub.label %></span>
+                        </a>
+                      <% }); %>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </nav>
+
+    <!-- Language Switcher & Search -->
+    <div class="header-utilities">
+      <form class="search-form" role="search">
+        <input type="search" placeholder="Search..." class="search-input" aria-label="Search">
+        <button type="submit" class="search-btn" aria-label="Search submit">🔍</button>
+      </form>
+
+      <nav class="language-switcher" role="navigation" aria-label="Language selection">
+        <% if (availableLanguages && availableLanguages.length > 0) { %>
+          <details class="language-menu">
+            <summary class="lang-trigger" aria-label="Select language"><%= lang %> ▼</summary>
+            <div class="language-list">
+              <% availableLanguages.forEach(lng => { %>
+                <a href="?lang=<%= lng %>" class="lang-link <%= lng === lang ? 'active' : '' %>" title="<%= {EN:'English',AF:'Afrikaans',ND:'Ndebele',NS:'Northern Sotho',ST:'Sotho',SS:'Swati',TS:'Tsonga',TN:'Tswana',VE:'Venda',XH:'Xhosa',ZU:'Zulu'}[lng] %>">
+                  <%= lng %>
+                </a>
+              <% }); %>
+            </div>
+          </details>
+        <% } %>
+      </nav>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>

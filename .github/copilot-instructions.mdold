@@ -1,0 +1,59 @@
+# AI Content Authoring - Copilot Instructions
+
+## Project Overview
+AIContentAuthoring is a content management system showcasing AI-augmented authoring processes for multi-language, multi-format documentation. The project maintains source content and translates it across language variants (EN-US, PT, AFR) for web publication.
+
+## Directory Structure & Conventions
+
+### Content Organization
+- **`Department 1/EN-US/`**: Source markdown files (authoritative content)
+  - `Clarity Deployment Guide.md` - SharePoint/Microsoft Clarity setup documentation
+  - Other organizational content in this structure
+- **`www/`**: Published content organized by language/region
+  - **`EN-US/`**: English publications
+  - **`PT/`**: Portuguese (portugal) translations with `Trns-PT-` prefix
+  - **`ARF/`**: Afrikaans/Other language translations with `Trns-AFR-` prefix
+  - Files use format: `[Trns-LANG-]<DocumentName>.<ext>.md`
+
+### File Naming Patterns
+- **Source files**: Plain filename (e.g., `Clarity Deployment Guide.md`)
+- **Translated files**: `Trns-<LANG>-<DocumentName>.<ext>.md`
+  - Example: `Trns-PT-Clarity Deployment Guide.pdf.md`
+  - Note: Original file extensions are preserved in the name (`.pdf.md`, `.png.md`)
+
+## Key Content Areas
+
+### Microsoft Clarity & SharePoint Integration
+- Deployment guides for Microsoft Clarity analytics
+- SharePoint solution package (sppkg) build instructions
+- PowerShell automation patterns for tenant-wide deployment
+- Component properties use JSON format: `{"clarityID":"value"}`
+
+### Multi-Language Workflow
+- Content flows from source (Department 1) → web publishing (www)
+- Translation naming uses ISO language codes: `PT` (Portuguese), `AFR` (Afrikaans)
+- Markdown metadata files preserve source document format in filename
+
+## Development Patterns
+
+### Build & Deployment
+- Documents reference npm-based workflows: `npm install`, `gulp build`, `gulp bundle --ship`, `gulp package-solution --ship`
+- SharePoint solutions use PnP PowerShell for deployment
+- Configuration via JSON in component properties and PowerShell scripts
+
+### Content Metadata
+- Markdown files maintain structural documentation of guides
+- Preserve original file format indicators (e.g., `.pdf.md`) for traceability
+- Documentation follows standard markdown with code blocks for technical commands
+
+## When Modifying Content
+
+1. **Source Changes**: Edit files in `Department 1/EN-US/` directory
+2. **Translation Updates**: Maintain `Trns-<LANG>-` prefix pattern in `www/` subdirectories
+3. **Consistency**: Ensure parallel structure across language directories
+4. **File Naming**: Keep original file extensions in the name for clarity
+
+## Important References
+- [Microsoft Clarity](https://clarity.microsoft.com/) - Analytics platform
+- SharePoint solution packages and App Catalog deployment
+- PnP PowerShell for enterprise SharePoint administration

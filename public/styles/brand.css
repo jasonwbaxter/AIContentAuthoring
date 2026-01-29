@@ -1,0 +1,80 @@
+/* Custom Branding - Modify these variables and styles for your brand */
+
+:root {
+  /* Brand Colors */
+  --brand-primary: #0078d4;      /* Microsoft Blue */
+  --brand-secondary: #107c10;    /* Microsoft Green */
+  --brand-accent: #ffc20e;       /* Microsoft Yellow */
+  --brand-success: #107c10;
+  --brand-warning: #ff8c00;
+  --brand-error: #e81828;
+  
+  /* Typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 20px;
+  --font-size-small: 14px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Brand-specific customizations */
+
+.logo {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo a {
+  color: var(--brand-primary);
+}
+
+.page-hero h1 {
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+.content-card {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+}
+
+.content-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.article-body h2 {
+  color: var(--brand-primary);
+  border-bottom-color: var(--brand-primary);
+}
+
+.breadcrumb a {
+  color: var(--brand-primary);
+}
+
+.lang-link.active {
+  background-color: var(--brand-primary);
+}
+
+.lang-link:hover {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+/* Add your brand-specific styles below */

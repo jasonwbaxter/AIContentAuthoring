@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <%- include('./_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+    <div class="main-wrapper">
+      <main class="content full-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <span aria-current="page">Search</span>
+        </nav>
+
+        <div class="section-hero">
+          <h1>Search results for "<%= q %>"</h1>
+          <p><%= results.length %> result(s)</p>
+        </div>
+
+        <section class="search-results">
+          <% if (results.length === 0) { %>
+            <p>No results found.</p>
+          <% } else { %>
+            <% results.forEach(r => { %>
+              <article class="result-card">
+                <h3><a href="<%= r.url %>"><%= r.title %></a></h3>
+                <p><%= r.excerpt %>...</p>
+                <a href="<%= r.url %>" class="btn">View Online</a>
+              </article>
+            <% }) %>
+          <% } %>
+        </section>
+      </main>
+    </div>
+    <%- include('./_footer') %>
+  </div>
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>

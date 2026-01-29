@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Central Bank</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/brand.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/sections.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('../../_header', { navigation: navigation, lang, langName, availableLanguages }) %>
+
+    <div class="main-wrapper">
+      <!-- Main Content -->
+      <main class="content full-width">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/data-publications">Data & Publications</a>
+          <span class="separator">/</span>
+          <span aria-current="page">Data Hub</span>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="section-hero">
+          <h1>Data Hub</h1>
+          <p>Access organized economic and financial data by category</p>
+        </div>
+
+        <!-- Data Categories Grid -->
+        <section class="data-hub-section">
+          <h2>Data Categories</h2>
+          
+          <div class="categories-grid">
+            <% if (dataCategories && dataCategories.length > 0) { %>
+              <% dataCategories.forEach(category => { %>
+                <a href="#<%= category.id %>" class="category-card">
+                  <div class="category-icon"><%= category.icon %></div>
+                  <h3><%= category.label %></h3>
+                  <span class="arrow">→</span>
+                </a>
+              <% }); %>
+            <% } %>
+          </div>
+        </section>
+
+        <!-- Detailed Category Sections -->
+        <section class="category-details">
+          
+          <article class="category-section" id="money-banking">
+            <h2>Money & Banking</h2>
+            <p class="category-description">
+              Data on monetary aggregates, banking sector indicators, and money market conditions.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>Monetary Aggregates</h4>
+                <p>M0, M1, M2, and M3 money supply measures</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Banking Sector Assets</h4>
+                <p>Total assets and liabilities of registered banks</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Interest Rates</h4>
+                <p>Deposit and lending rates across institutions</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="capital-market">
+            <h2>Capital Market</h2>
+            <p class="category-description">
+              Stock exchange data, bond markets, and equity indices.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>JSE Indices</h4>
+                <p>FTSE/JSE All Share and sectoral indices</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Bond Market Data</h4>
+                <p>Government and corporate bond yields and volumes</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Equity Trading</h4>
+                <p>Market volume, turnover, and price data</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="financial-accounts">
+            <h2>National Financial Accounts</h2>
+            <p class="category-description">
+              Integrated financial statistics and flow-of-funds analysis.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>Financial Assets & Liabilities</h4>
+                <p>By sector and instrument type</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Credit Flows</h4>
+                <p>Domestic credit by sector and type</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Institutional Investors</h4>
+                <p>Pension funds, insurance, and investment holdings</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="public-finance">
+            <h2>Public Finance</h2>
+            <p class="category-description">
+              Government budget and fiscal statistics.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>Government Finances</h4>
+                <p>Revenue, expenditure, and deficits</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Government Debt</h4>
+                <p>Domestic and foreign debt statistics</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Fiscal Operations</h4>
+                <p>Monthly and quarterly fiscal data</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="external-accounts">
+            <h2>External Economic Accounts</h2>
+            <p class="category-description">
+              Balance of payments and international investment position.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>Balance of Payments</h4>
+                <p>Current, capital, and financial accounts</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Foreign Reserves</h4>
+                <p>Gross and net international reserves</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>International Investment Position</h4>
+                <p>Assets and liabilities vis-à-vis non-residents</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="national-accounts">
+            <h2>National Accounts</h2>
+            <p class="category-description">
+              GDP, sectoral analysis, and expenditure data.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>GDP by Sector</h4>
+                <p>Economic activity by industry and category</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Expenditure Components</h4>
+                <p>Consumption, investment, government spending, net exports</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Income Components</h4>
+                <p>Wages, profits, and factor income</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="indicators">
+            <h2>General Economic Indicators</h2>
+            <p class="category-description">
+              Key macroeconomic indicators and composite indices.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>Consumer & Producer Prices</h4>
+                <p>CPI and PPI by category and region</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Employment Data</h4>
+                <p>Employment, unemployment, and labour force statistics</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Confidence Indices</h4>
+                <p>Consumer and business sentiment indicators</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-section" id="experimental">
+            <h2>Experimental Tables</h2>
+            <p class="category-description">
+              New and experimental datasets undergoing development and validation.
+            </p>
+            <div class="data-items">
+              <div class="data-item">
+                <h4>High-Frequency Data</h4>
+                <p>Daily and intraday market data (beta)</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Alternative Indicators</h4>
+                <p>Nowcasts and real-time estimates (beta)</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+              <div class="data-item">
+                <h4>Stress Test Scenarios</h4>
+                <p>Hypothetical baseline and adverse scenarios (beta)</p>
+                <a href="#" class="download-link">CSV</a>
+                <a href="#" class="download-link">JSON</a>
+              </div>
+            </div>
+          </article>
+
+        </section>
+
+        <!-- Bulk Download Option -->
+        <section class="bulk-download">
+          <h2>Bulk Download</h2>
+          <p>Download all data categories in a single file:</p>
+          <div class="download-buttons">
+            <a href="#" class="btn btn-primary">📥 Download All Data (ZIP)</a>
+            <a href="#" class="btn btn-secondary">📋 Browse Files</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <%- include('../../_footer') %>
+  </div>
+
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/navigation.js"></script>
+</body>
+</html>
