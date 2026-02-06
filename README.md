@@ -8,6 +8,18 @@ A modern, accessible web platform for a Central Bank featuring AI-enhanced conte
 
 ---
 
+## ⚠️ Disclaimer
+
+This is a sample solution provided as-is for educational and demonstration purposes. Microsoft and the project contributors make no warranties, express or implied, with respect to the sample code. The sample code is not intended for production use without substantial modification and thorough testing. 
+
+**Use at your own risk.** You are responsible for determining the appropriateness of using the sample code for your situation and for any consequences of use. Before deploying to production, you must:
+- Conduct thorough security and performance testing
+- Review and modify code as needed for your specific requirements
+- Ensure compliance with your organization's policies and standards
+- Implement proper error handling, logging, and monitoring
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
