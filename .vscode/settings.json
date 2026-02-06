@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e592050f-5ec0-4cd1-b401-a6910aa6622f/resourceGroups/appsvc_linux_southafricanorth_basic/providers/Microsoft.Web/sites/AIContentAuthoringCentralBank",
+    "appService.deploySubpath": "."
+}

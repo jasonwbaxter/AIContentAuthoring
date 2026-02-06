@@ -46,9 +46,19 @@
               <button id="summarizeBtn" class="ai-button" title="Generate AI summary of this article">
                 ✨ Summarize with AI
               </button>
-              <button id="audioRecapBtn" class="ai-button" title="Generate audio recap of this article">
-                🎵 Audio Recap
-              </button>
+              <div class="audio-recap-group">
+                <button id="audioRecapBtn" class="ai-button" title="Generate audio recap of this article">
+                  🎵 Audio Recap
+                </button>
+                <div class="user-type-toggle" title="Switch between End User and Technical User views">
+                  <input type="checkbox" id="userTypeToggle" class="toggle-checkbox">
+                  <label for="userTypeToggle" class="toggle-label">
+                    <span class="toggle-text-enduser">End User</span>
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text-technical">Technical</span>
+                  </label>
+                </div>
+              </div>
             </div>
 
             <!-- AI Summary Panel (Hidden by default) -->
@@ -97,6 +107,14 @@
   <script>
     // Set language for AI features
     const currentLang = '<%= lang %>';
+    const currentPath = '<%= typeof filePath !== "undefined" ? filePath : "" %>';
+    
+    // Only show toggle for quarterly bulletin pages
+    const userTypeToggle = document.getElementById('userTypeToggle');
+    if (userTypeToggle) {
+      // Toggle is only present in views where it's needed
+      userTypeToggle.style.display = 'inline-flex';
+    }
     
     // Summarize with AI
     document.getElementById('summarizeBtn').addEventListener('click', async function() {

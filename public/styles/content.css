@@ -250,3 +250,114 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* User Type Toggle */
+.audio-recap-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-type-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  border-radius: 20px;
+  padding: 2px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  font-size: 12px;
+}
+
+.toggle-text-enduser,
+.toggle-text-technical {
+  padding: 6px 12px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.toggle-slider {
+  width: 32px;
+  height: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-label {
+  position: relative;
+}
+
+.toggle-text-enduser {
+  margin-left: 6px;
+  z-index: 1;
+  position: relative;
+}
+
+.toggle-text-technical {
+  margin-right: 6px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Checked state */
+.toggle-checkbox:checked + .toggle-label {
+  background: #f0f0f0;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-text-enduser {
+  color: #999;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-text-technical {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-slider {
+  margin-left: calc(100% - 34px);
+}
+
+/* Unchecked state */
+.toggle-checkbox:not(:checked) + .toggle-label .toggle-text-enduser {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.toggle-checkbox:not(:checked) + .toggle-label .toggle-text-technical {
+  color: #999;
+}
+
+.toggle-label:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+@media (max-width: 768px) {
+  .audio-recap-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .toggle-label {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

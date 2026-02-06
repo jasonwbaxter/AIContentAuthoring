@@ -137,4 +137,87 @@ function setButtonLoading(button, isLoading) {
 document.addEventListener('DOMContentLoaded', function() {
   addCopyButtonsToCodeBlocks();
   initializeAIFeatures();
+  initializeUserTypeToggle();
 });
+
+/**
+ * Initialize user type toggle for quarterly bulletin
+ */
+function initializeUserTypeToggle() {
+  const toggle = document.getElementById('userTypeToggle');
+  const audioRecapBtn = document.getElementById('audioRecapBtn');
+  
+  if (!toggle || !audioRecapBtn) {
+    return; // Toggle not available on this page
+  }
+  
+  // Load saved preference
+  const savedUserType = localStorage.getItem('userType') || 'enduser';
+  toggle.checked = savedUserType === 'technical';
+  
+  // Handle toggle changes
+  toggle.addEventListener('change', function() {
+    const isTechnical = this.checked;
+    localStorage.setItem('userType', isTechnical ? 'technical' : 'enduser');
+    loadUserTypeContent(isTechnical);
+  });
+}
+
+/**
+ * Load content based on user type
+ */
+async function loadUserTypeContent(isTechnical) {
+  const currentPath = window.location.pathname;
+  
+  // Determine which markdown file to load
+  let markdownFile = 'quarterly-bulletin-q4-2025';
+  if (isTechnical) {
+    markdownFile = 'quarterly-bulletin-q4-2025-economist';
+  } else {
+    markdownFile = 'quarterly-bulletin-q4-2025-enduser';
+  }
+  
+  // Check if we're on a quarterly bulletin page
+  if (!currentPath.includes('quarterly-bulletin')) {
+    return; // Not a quarterly bulletin page, skip
+  }
+  
+  try {
+    // Use the server's content endpoint to fetch the markdown rendered as HTML
+    const newPath = currentPath.replace(/\/quarterly-bulletin-q4-2025(?:-enduser|-economist)?/, `/${markdownFile}`);
+    
+    const response = await fetch(newPath);
+    if (!response.ok) {
+      throw new Error(`Failed to load content: ${response.status}`);
+    }
+    
+    const html = await response.text();
+    
+    // Parse the HTML and extract the article body
+    const parser = new DOMParser();
+    const newDoc = parser.parseFromString(html, 'text/html');
+    const newContent = newDoc.querySelector('.article-body');
+    
+    if (newContent) {
+      // Update the article body with new content
+      const currentContent = document.querySelector('.article-body');
+      if (currentContent) {
+        currentContent.innerHTML = newContent.innerHTML;
+        
+        // Scroll to top of article smoothly
+        const articleElement = document.querySelector('.article');
+        if (articleElement) {
+          articleElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Reinitialize syntax highlighting if needed
+        if (typeof Prism !== 'undefined') {
+          Prism.highlightAll();
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error loading user type content:', error);
+    // Silently fail - user can see the current content
+  }
+}
