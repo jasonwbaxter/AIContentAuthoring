@@ -13,6 +13,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Expose request context to templates so language links can preserve/transform URLs.
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  res.locals.currentQuery = req.query;
+  next();
+});
+
 // Utility: Get folder structure and metadata
 function getFolderStructure(dir) {
   const structure = {};
@@ -95,7 +102,7 @@ const LANGUAGES = {
 
 // Home page
 app.get('/', (req, res) => {
-  const lang = req.query.lang || 'EN';
+  const lang = (req.query.lang || 'EN').toUpperCase();
   
   res.render('index', {
     title: 'Contoso Bank',
@@ -108,7 +115,7 @@ app.get('/', (req, res) => {
 
 // Content page
 app.get('/content/:lang/*', (req, res) => {
-  const { lang } = req.params;
+  const lang = (req.params.lang || 'EN').toUpperCase();
   const filePath = req.params[0];
   const fullPath = path.join(WEB_ROOT, lang, filePath.replace(/\//g, path.sep));
   
@@ -140,7 +147,7 @@ app.get('/content/:lang/*', (req, res) => {
 // Search route: simple full-text search within markdown files for a language
 app.get('/search', (req, res) => {
   const q = (req.query.q || '').trim();
-  const lang = req.query.lang || 'EN';
+  const lang = (req.query.lang || 'EN').toUpperCase();
   const results = [];
   if (!q) {
     return res.render('search', { title: 'Search', q, results, navigation: navigationStructure.main, lang, langName: LANGUAGES[lang], availableLanguages: Object.keys(LANGUAGES) });
@@ -298,7 +305,7 @@ app.get('/api/navigation', (req, res) => {
 
 // About Section Routes
 app.get('/about/', (req, res) => {
-  const lang = req.query.lang || 'EN';
+  const lang = (req.query.lang || 'EN').toUpperCase();
   res.render('sections/about/index', { 
     title: 'About Contoso Bank',
     lang,
@@ -309,7 +316,7 @@ app.get('/about/', (req, res) => {
 });
 
 app.get('/about/mandate/', (req, res) => {
-  const lang = req.query.lang || 'EN';
+  const lang = (req.query.lang || 'EN').toUpperCase();
   res.render('sections/about/mandate', {
     title: 'Mandate & Role',
     lang,

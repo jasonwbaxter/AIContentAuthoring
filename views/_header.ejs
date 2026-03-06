@@ -48,11 +48,27 @@
 
       <nav class="language-switcher" role="navigation" aria-label="Language selection">
         <% if (availableLanguages && availableLanguages.length > 0) { %>
+          <%
+            const pathValue = typeof currentPath === 'string' ? currentPath : '/';
+            const queryValue = (currentQuery && typeof currentQuery === 'object') ? currentQuery : {};
+            const isContentPath = pathValue.startsWith('/content/');
+
+            function languageHref(lng) {
+              if (isContentPath) {
+                return pathValue.replace(/^\/content\/[^/]+/, `/content/${lng}`);
+              }
+
+              const params = new URLSearchParams(queryValue);
+              params.set('lang', lng);
+              const queryString = params.toString();
+              return queryString ? `${pathValue}?${queryString}` : pathValue;
+            }
+          %>
           <details class="language-menu">
             <summary class="lang-trigger" aria-label="Select language"><%= lang %> ▼</summary>
             <div class="language-list">
               <% availableLanguages.forEach(lng => { %>
-                <a href="?lang=<%= lng %>" class="lang-link <%= lng === lang ? 'active' : '' %>" title="<%= {EN:'English',AF:'Afrikaans',ND:'Ndebele',NS:'Northern Sotho',ST:'Sotho',SS:'Swati',TS:'Tsonga',TN:'Tswana',VE:'Venda',XH:'Xhosa',ZU:'Zulu'}[lng] %>">
+                <a href="<%= languageHref(lng) %>" class="lang-link <%= lng === lang ? 'active' : '' %>" title="<%= {EN:'English',AF:'Afrikaans',ND:'Ndebele',NS:'Northern Sotho',ST:'Sotho',SS:'Swati',TS:'Tsonga',TN:'Tswana',VE:'Venda',XH:'Xhosa',ZU:'Zulu'}[lng] %>">
                   <%= lng %>
                 </a>
               <% }); %>
