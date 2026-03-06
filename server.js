@@ -364,112 +364,64 @@ app.get('/api/navigation', (req, res) => {
   res.json(navigationStructure);
 });
 
+function redirectToContent(req, res, markdownPath) {
+  const lang = String(req.query.lang || 'EN').toUpperCase();
+  return res.redirect(`/content/${lang}/${markdownPath}`);
+}
+
 // About Section Routes
 app.get('/about/', (req, res) => {
-  const lang = (req.query.lang || 'EN').toUpperCase();
-  res.render('sections/about/index', { 
-    title: 'About Contoso Bank',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main
-  });
+  return redirectToContent(req, res, 'about/index.md');
 });
 
 app.get('/about/mandate/', (req, res) => {
-  const lang = (req.query.lang || 'EN').toUpperCase();
-  res.render('sections/about/mandate', {
-    title: 'Mandate & Role',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'mandate'
-  });
+  return redirectToContent(req, res, 'about/mandate.md');
 });
 
 app.get('/about/governance/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/about/governance', {
-    title: 'Leadership & Governance',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'governance'
-  });
+  return redirectToContent(req, res, 'about/governance.md');
 });
 
 app.get('/about/policies/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/about/policies', {
-    title: 'Policies & Compliance',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'policies'
-  });
+  return redirectToContent(req, res, 'about/policies.md');
 });
 
 app.get('/about/careers/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/about/careers', {
-    title: 'Careers',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'careers'
-  });
+  return redirectToContent(req, res, 'about/careers.md');
 });
 
 // Monetary Policy Routes
 app.get('/policy-markets/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policy-markets/index', {
-    title: 'Monetary Policy & Markets',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main
-  });
+  return redirectToContent(req, res, 'policy-markets/index.md');
 });
 
 app.get('/policy-markets/repo-mpc/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policy-markets/repo-mpc', {
-    title: 'Repo & MPC',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'repo-mpc'
-  });
+  return redirectToContent(req, res, 'policy-markets/repo-mpc.md');
 });
 
 app.get('/policy-markets/market-operations/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policy-markets/market-operations', {
-    title: 'Market Operations',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'market-operations'
-  });
+  return redirectToContent(req, res, 'policy-markets/market-operations.md');
 });
 
 app.get('/policy-markets/rates/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policy-markets/rates', {
-    title: 'Interest Rates',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'rates'
-  });
+  return redirectToContent(req, res, 'policy-markets/rates.md');
+});
+
+// Aliases for legacy Monetary Policy routes
+app.get('/monetary-policy/', (req, res) => {
+  return redirectToContent(req, res, 'monetary-policy/index.md');
+});
+
+app.get('/monetary-policy/repo-mpc/', (req, res) => {
+  return redirectToContent(req, res, 'monetary-policy/repo-mpc.md');
+});
+
+app.get('/monetary-policy/market-ops/', (req, res) => {
+  return redirectToContent(req, res, 'monetary-policy/market-ops.md');
+});
+
+app.get('/monetary-policy/rates/', (req, res) => {
+  return redirectToContent(req, res, 'monetary-policy/rates.md');
 });
 
 // Data & Publications Routes
@@ -563,38 +515,19 @@ app.get('/data-publications/downloads/', (req, res) => {
 
 // News & Media Routes
 app.get('/news/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/news/index', {
-    title: 'News & Media',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main
-  });
+  return redirectToContent(req, res, 'news/index.md');
+});
+
+app.get('/news/newsroom/', (req, res) => {
+  return redirectToContent(req, res, 'news/newsroom.md');
 });
 
 app.get('/news/speeches/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/news/speeches', {
-    title: 'Speeches',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'speeches'
-  });
+  return redirectToContent(req, res, 'news/speeches.md');
 });
 
 app.get('/news/press-kits/', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/news/press-kits', {
-    title: 'Press Kits',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES),
-    navigation: navigationStructure.main,
-    currentPage: 'press-kits'
-  });
+  return redirectToContent(req, res, 'news/press-kits.md');
 });
 
 // Help & Contact Routes
@@ -671,43 +604,19 @@ app.get('/help-contact/supported-browsers/', (req, res) => {
 
 // Policy Routes
 app.get('/privacy', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policies/privacy', {
-    title: 'Privacy Policy',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES)
-  });
+  return redirectToContent(req, res, 'policies/privacy.md');
 });
 
 app.get('/paia', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policies/paia', {
-    title: 'PAIA',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES)
-  });
+  return redirectToContent(req, res, 'policies/paia.md');
 });
 
 app.get('/cookies', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policies/cookies', {
-    title: 'Cookie Policy',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES)
-  });
+  return redirectToContent(req, res, 'policies/cookies.md');
 });
 
 app.get('/disclaimer', (req, res) => {
-  const lang = req.query.lang || 'EN';
-  res.render('sections/policies/disclaimer', {
-    title: 'Disclaimer',
-    lang,
-    langName: LANGUAGES[lang],
-    availableLanguages: Object.keys(LANGUAGES)
-  });
+  return redirectToContent(req, res, 'policies/disclaimer.md');
 });
 
 // Sitemap
