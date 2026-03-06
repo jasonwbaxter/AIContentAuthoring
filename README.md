@@ -311,6 +311,34 @@ Content-Type: application/json
 }
 ```
 
+### Batch Audio Generation
+
+Generate podcast-style WAV recaps from markdown files:
+
+```bash
+# Local system voices (strict language match)
+npm run audio:generate -- -Languages EN,AF,XH,ZU -Overwrite
+
+# Azure Speech voices (recommended for AF/XH/ZU)
+npm run audio:generate:azure -- -Languages AF,XH,ZU -Overwrite
+```
+
+Azure mode requires:
+
+```bash
+AZURE_SPEECH_REGION=<your-region>
+AZURE_SPEECH_KEY=<your-key>
+```
+
+Optional per-language voice overrides:
+
+```bash
+AZURE_SPEECH_VOICE_EN=<voice short name>
+AZURE_SPEECH_VOICE_AF=<voice short name>
+AZURE_SPEECH_VOICE_XH=<voice short name>
+AZURE_SPEECH_VOICE_ZU=<voice short name>
+```
+
 ### Integration
 
 Both features are integrated into the content pages with:
