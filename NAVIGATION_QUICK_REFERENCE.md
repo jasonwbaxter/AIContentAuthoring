@@ -262,7 +262,7 @@ const navigationStructure = {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Title - Central Bank</title>
+  <title>Page Title - Contoso Bank</title>
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/navigation.css">
   <link rel="stylesheet" href="/styles/sections.css">
@@ -383,3 +383,4 @@ For issues or questions:
 
 **Last Updated**: January 2026  
 **Version**: 2.0 (Phase 2 Complete)
+

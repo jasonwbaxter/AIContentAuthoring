@@ -2,7 +2,7 @@
 
 ## Data Publication Schedule
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The Central Bank publishes various economic and financial statistics according to a regular schedule.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The Contoso Bank publishes various economic and financial statistics according to a regular schedule.
 
 ### Monthly Releases
 
@@ -160,7 +160,7 @@ A: Yes, all data back to 1920 is available through our statistical database.
 A: Contact our statistics department via email with details of the error.
 
 **Q: Can I use this data in publications?**  
-A: Yes, with proper attribution to the Central Bank.
+A: Yes, with proper attribution to the Contoso Bank.
 
 ---
 
@@ -213,3 +213,4 @@ Available free of charge in:
 **Last Updated**: January 2026  
 **Next Review**: June 2026  
 **Contact**: statistics@central-bank.gov.za
+

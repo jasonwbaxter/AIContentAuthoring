@@ -14,7 +14,7 @@ World GDP:                 3.1% (2026 forecast)
 
 ### Key Global Trends
 
-- **Monetary Policy Normalization**: Central banks continuing policy adjustments
+- **Monetary Policy Normalization**: Monetary authorities continuing policy adjustments
 - **Inflation Moderation**: Pricing pressures easing in most advanced economies
 - **Trade Dynamics**: Supply chain rebalancing ongoing
 - **Technology Integration**: Accelerating digital transformation
@@ -139,3 +139,4 @@ Et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullam
 
 **Forecast Date**: January 2026  
 **Next Update**: April 2026
+

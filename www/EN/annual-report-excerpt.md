@@ -4,11 +4,11 @@
 
 Dear Stakeholders,
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. It is with pleasure that I present the Central Bank's Annual Report for 2025, a year marked by significant economic challenges and important policy adjustments.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. It is with pleasure that I present the Contoso Bank's Annual Report for 2025, a year marked by significant economic challenges and important policy adjustments.
 
 ### Year in Review
 
-During 2025, the Central Bank:
+During 2025, the Contoso Bank:
 
 - Maintained price stability as inflation moderated from elevated levels
 - Supported financial system stability through prudent regulation
@@ -173,7 +173,7 @@ Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua:
 
 ## Looking Forward
 
-Et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. The Central Bank remains committed to:
+Et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. The Contoso Bank remains committed to:
 
 1. Maintaining price stability
 2. Supporting financial system resilience
@@ -186,3 +186,4 @@ Et dolore magna aliqua, ut enim ad minim veniam, quis nostrud exercitation ullam
 **Published**: March 2026  
 **Full Report**: Available at www.central-bank.gov.za/annual-reports  
 **Feedback**: annual-report@central-bank.gov.za
+

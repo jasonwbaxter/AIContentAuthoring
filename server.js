@@ -98,7 +98,7 @@ app.get('/', (req, res) => {
   const lang = req.query.lang || 'EN';
   
   res.render('index', {
-    title: 'Central Bank',
+    title: 'Contoso Bank',
     navigation: navigationStructure.main,
     lang,
     langName: LANGUAGES[lang],
@@ -300,7 +300,7 @@ app.get('/api/navigation', (req, res) => {
 app.get('/about/', (req, res) => {
   const lang = req.query.lang || 'EN';
   res.render('sections/about/index', { 
-    title: 'About Central Bank',
+    title: 'About Contoso Bank',
     lang,
     langName: LANGUAGES[lang],
     availableLanguages: Object.keys(LANGUAGES),
@@ -460,12 +460,12 @@ app.get('/data-publications/indicators/', (req, res) => {
   const lang = req.query.lang || 'EN';
   
   const indicators = [
-    { id: 'cpi', label: 'Consumer Price Index (CPI)', value: '6.5%', unit: 'YoY', lastUpdated: new Date('2026-01-15'), source: 'Central Bank' },
-    { id: 'ppi', label: 'Producer Price Index (PPI)', value: '4.2%', unit: 'YoY', lastUpdated: new Date('2026-01-10'), source: 'Central Bank' },
-    { id: 'repo-rate', label: 'Repo Rate', value: '8.25%', unit: 'pa', lastUpdated: new Date('2026-01-29'), source: 'Central Bank' },
-    { id: 'prime-rate', label: 'Prime Lending Rate', value: '11.75%', unit: 'pa', lastUpdated: new Date('2026-01-29'), source: 'Central Bank' },
-    { id: 'usd-zar', label: 'USD/ZAR Exchange Rate', value: '17.85', unit: 'ZAR/USD', lastUpdated: new Date('2026-01-30'), source: 'Central Bank' },
-    { id: 'zaronia', label: 'ZARONIA Rate', value: '8.12%', unit: 'pa', lastUpdated: new Date('2026-01-30'), source: 'Central Bank' }
+    { id: 'cpi', label: 'Consumer Price Index (CPI)', value: '6.5%', unit: 'YoY', lastUpdated: new Date('2026-01-15'), source: 'Contoso Bank' },
+    { id: 'ppi', label: 'Producer Price Index (PPI)', value: '4.2%', unit: 'YoY', lastUpdated: new Date('2026-01-10'), source: 'Contoso Bank' },
+    { id: 'repo-rate', label: 'Repo Rate', value: '8.25%', unit: 'pa', lastUpdated: new Date('2026-01-29'), source: 'Contoso Bank' },
+    { id: 'prime-rate', label: 'Prime Lending Rate', value: '11.75%', unit: 'pa', lastUpdated: new Date('2026-01-29'), source: 'Contoso Bank' },
+    { id: 'usd-zar', label: 'USD/ZAR Exchange Rate', value: '17.85', unit: 'ZAR/USD', lastUpdated: new Date('2026-01-30'), source: 'Contoso Bank' },
+    { id: 'zaronia', label: 'ZARONIA Rate', value: '8.12%', unit: 'pa', lastUpdated: new Date('2026-01-30'), source: 'Contoso Bank' }
   ];
   
   res.render('sections/data-publications/indicators', {
@@ -666,7 +666,8 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
   console.log(`📁 Content root: ${WEB_ROOT}`);
   console.log(`🌍 Available languages: ${Object.keys(LANGUAGES).join(', ')}`);
-  console.log(`📢 Central Bank Content Portal`);
+  console.log(`📢 Contoso Bank Content Portal`);
 });
 
 module.exports = app;
+

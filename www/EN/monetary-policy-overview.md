@@ -1,8 +1,8 @@
 # Monetary Policy Overview
 
-## Central Bank's Mandate
+## Contoso Bank's Mandate
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. The Central Bank's primary objective is to achieve and maintain price stability and to support the economic policies of the government.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. The Contoso Bank's primary objective is to achieve and maintain price stability and to support the economic policies of the government.
 
 ### Key Responsibilities
 
@@ -23,7 +23,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### 2. Interest Rate Policy
 
-The repo rate is the primary instrument through which the Central Bank influences monetary conditions. Decisions on the repo rate are taken by the Monetary Policy Committee (MPC) every two months.
+The repo rate is the primary instrument through which the Contoso Bank influences monetary conditions. Decisions on the repo rate are taken by the Monetary Policy Committee (MPC) every two months.
 
 ```
 Repo Rate Decisions:
@@ -67,3 +67,4 @@ We remain committed to our mandate of achieving and maintaining price stability 
 
 **Last Updated**: January 2026  
 **For More Information**: Visit our [Data & Publications](https://central-bank.gov.za/data-publications) section
+

@@ -439,7 +439,7 @@ For questions or issues:
 
 ---
 
-**Thank you for using the Central Bank Navigation & Data Hub System!**
+**Thank you for using the Contoso Bank Navigation & Data Hub System!**
 
 All requirements met. Project complete. Ready for deployment.
 
@@ -447,3 +447,4 @@ All requirements met. Project complete. Ready for deployment.
 
 *Last Updated: January 27, 2026*  
 *Version: 2.0 - Phase 2 Complete*
+

@@ -1,4 +1,4 @@
-# Quick Start Guide - Central Bank Portal
+# Quick Start Guide - Contoso Bank Portal
 
 ## 🚀 Getting Started in 5 Minutes
 
@@ -142,7 +142,7 @@ const lang = req.query.lang || 'EN';  // Change 'EN' to desired language
 ### Change Website Title
 Edit `server.js` line ~109:
 ```javascript
-title: 'Central Bank',  // Change here
+title: 'Contoso Bank',  // Change here
 ```
 
 ### Customize AI Button Text
@@ -164,7 +164,7 @@ Edit `views/content.ejs` lines 58 & 62:
 ### Test with Sample Content
 Add a file: `www/EN/Welcome.md`
 ```markdown
-# Welcome to Central Bank
+# Welcome to Contoso Bank
 
 This is test content.
 ```
@@ -238,7 +238,7 @@ Edit `public/styles/main.css` lines 5-11:
 
 ## ✅ You're All Set!
 
-Your **Central Bank Content Portal** is ready to use!
+Your **Contoso Bank Content Portal** is ready to use!
 
 Next steps:
 1. Add articles to language folders
@@ -249,4 +249,5 @@ Next steps:
 ---
 
 **Happy Content Creation! 🎉**
+
 

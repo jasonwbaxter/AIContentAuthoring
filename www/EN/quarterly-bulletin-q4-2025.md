@@ -28,7 +28,7 @@ Labour market indicators remained mixed: unemployment edged up slightly, but par
 
 ## Financial Markets and Liquidity
 
-Money market rates reflected the policy rate path, while government bond yields compressed slightly as risk sentiment improved. Liquidity in the interbank market remained adequate, supported by central bank operations when needed.
+Money market rates reflected the policy rate path, while government bond yields compressed slightly as risk sentiment improved. Liquidity in the interbank market remained adequate, supported by Contoso Bank operations when needed.
 
 ## Policy Actions and Outlook
 

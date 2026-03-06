@@ -1,7 +1,7 @@
-# Central Bank Content Portal - Updates
+# Contoso Bank Content Portal - Updates
 
 ## Overview
-The AI Content Authoring website has been completely updated to serve as the **Central Bank Content Portal** with support for all 11 official South African languages and new AI-powered features.
+The AI Content Authoring website has been completely updated to serve as the **Contoso Bank Content Portal** with support for all 11 official South African languages and new AI-powered features.
 
 ---
 
@@ -58,16 +58,16 @@ Users can switch languages using the language switcher in the header. The langua
 
 ### Title Changes
 - Old: "AI Content Authoring"
-- New: **"Central Bank"**
+- New: **"Contoso Bank"**
 - Applied throughout all pages (header, footer, browser title)
 
 ### Header
-- Updated logo to display "Central Bank"
+- Updated logo to display "Contoso Bank"
 - Language switcher shows both codes and full language names
 - Sticky navigation for easy language switching
 
 ### Footer
-- Updated copyright to "© 2026 Central Bank"
+- Updated copyright to "© 2026 Contoso Bank"
 
 ---
 
@@ -124,7 +124,7 @@ const LANGUAGES = {
 ### Updated Views
 
 #### `views/index.ejs`
-- Updated title to "Central Bank"
+- Updated title to "Contoso Bank"
 - Language switcher with full language names in tooltips
 - Home page greeting includes language name
 
@@ -275,4 +275,5 @@ For questions about implementation or feature requests, refer to:
 - `views/` for template updates
 - `public/styles/content.css` for AI feature styling
 - `public/scripts/main.js` for frontend interactions
+
 

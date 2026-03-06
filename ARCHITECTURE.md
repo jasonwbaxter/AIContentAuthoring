@@ -1,15 +1,15 @@
-# Central Bank Portal - Architecture & Features Map
+# Contoso Bank Portal - Architecture & Features Map
 
 ## 🏗️ System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   CENTRAL BANK PORTAL                        │
+│                   Contoso Bank PORTAL                        │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────────┐  ┌──────────────────┐                 │
 │  │  Header/Branding │  │ Language Switcher│                 │
-│  │  "Central Bank"  │  │  EN AF ND NS ST  │                 │
+│  │  "Contoso Bank"  │  │  EN AF ND NS ST  │                 │
 │  │                  │  │  SS TS TN VE XH  │                 │
 │  │                  │  │        ZU        │                 │
 │  └──────────────────┘  └──────────────────┘                 │
@@ -39,7 +39,7 @@
 │  │  └─────────────────────────────────────────────────┘ │  │
 │  └──────────────────────────────────────────────────────┘  │
 │                                                               │
-│  © 2026 Central Bank. All rights reserved.                  │
+│  © 2026 Contoso Bank. All rights reserved.                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -86,7 +86,7 @@
 4. Builds navigation menu from files/folders
    ↓
 5. Renders index.ejs with:
-   - Title: "Central Bank"
+   - Title: "Contoso Bank"
    - Menu structure
    - Language switcher
    - Available languages
@@ -144,7 +144,7 @@ User can close panel with ✕
 ### Header
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│ 🏦 Central Bank    EN | AF | ND | NS | ST | SS | TS | TN... │
+│ 🏦 Contoso Bank    EN | AF | ND | NS | ST | SS | TS | TN... │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -354,7 +354,7 @@ Live Portal 🎉
 | Feature | Status | Implementation |
 |---------|--------|-----------------|
 | 11 SA Languages | ✅ Complete | Folders created, routes updated |
-| Central Bank Branding | ✅ Complete | All pages updated |
+| Contoso Bank Branding | ✅ Complete | All pages updated |
 | Summarize with AI | ✅ Complete | Button, panel, API ready |
 | Audio Recap | ✅ Complete | Button, player, API ready |
 | Language Switcher | ✅ Complete | Header navigation |
@@ -366,5 +366,6 @@ Live Portal 🎉
 
 ---
 
-**Everything is ready! Your Central Bank Portal is complete and ready for deployment. 🎉**
+**Everything is ready! Your Contoso Bank Portal is complete and ready for deployment. 🎉**
+
 

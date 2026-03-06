@@ -1,6 +1,6 @@
-# Central Bank Website - AI Content Authoring Platform
+# Contoso Bank Website - AI Content Authoring Platform
 
-A modern, accessible web platform for a Central Bank featuring AI-enhanced content management, multilingual support (11 South African languages), and comprehensive data publication capabilities.
+A modern, accessible web platform for a Contoso Bank featuring AI-enhanced content management, multilingual support (11 South African languages), and comprehensive data publication capabilities.
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -38,7 +38,7 @@ This is a sample solution provided as-is for educational and demonstration purpo
 
 ## Overview
 
-This project is a comprehensive web platform designed for the Central Bank, combining modern web development practices with AI-powered features for content management and accessibility. The platform includes:
+This project is a comprehensive web platform designed for the Contoso Bank, combining modern web development practices with AI-powered features for content management and accessibility. The platform includes:
 
 - **Navigation System**: Modern 5-category mega menu with full keyboard accessibility
 - **Data Hub**: Centralized repository for publications, data, and indicators
@@ -48,7 +48,7 @@ This project is a comprehensive web platform designed for the Central Bank, comb
 
 ### Project Phases
 
-**Phase 1 (Completed)**: Central Bank rebranding, language folder setup, AI feature integration
+**Phase 1 (Completed)**: Contoso Bank rebranding, language folder setup, AI feature integration
 **Phase 2 (Completed)**: Navigation restructuring, data consolidation, footer reorganization
 **Phase 3 (Planned)**: Real data integration, search functionality, advanced analytics
 
@@ -665,3 +665,4 @@ This project is licensed under the MIT License - see [LICENSE](./LICENSE) file f
 **Status**: Active & Maintained
 
 For more information, visit [Documentation Index](./DOCUMENTATION_INDEX.md)
+

@@ -1,7 +1,7 @@
 # Keyboard Navigation & Accessibility Testing Guide
 
 ## Overview
-This guide provides step-by-step instructions for testing keyboard navigation and accessibility features of the Central Bank website.
+This guide provides step-by-step instructions for testing keyboard navigation and accessibility features of the Contoso Bank website.
 
 ---
 
@@ -575,3 +575,4 @@ Use this template to document testing results:
 
 **Last Updated**: January 2026  
 **Version**: 1.0
+

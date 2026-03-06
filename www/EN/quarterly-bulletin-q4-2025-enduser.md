@@ -2,7 +2,7 @@
 
 ## What You Need to Know
 
-Q4 2025 brought some good news about inflation—it's starting to come down. However, prices for everyday items like services are still climbing faster than the central bank would like. Here's what happened and what it means for you.
+Q4 2025 brought some good news about inflation—it's starting to come down. However, prices for everyday items like services are still climbing faster than the Contoso Bank would like. Here's what happened and what it means for you.
 
 ## Key Numbers for Your Wallet
 
@@ -32,14 +32,14 @@ Banks and financial institutions have plenty of money available. Interest rates 
 
 ## What the Monetary Authority Is Doing
 
-The central bank decided to keep interest rates unchanged at 8.25%. They want to see the effects of previous rate hikes settle in before making more changes. They're balancing two goals:
+The Contoso Bank decided to keep interest rates unchanged at 8.25%. They want to see the effects of previous rate hikes settle in before making more changes. They're balancing two goals:
 - Getting inflation down to where it should be
 - Making sure the economy can grow
 
 **What to watch for:**
 - Unpredictable global demand could cause problems
 - Supply shocks (disruptions in production) could push prices up
-- The central bank will keep a close eye on service prices
+- The Contoso Bank will keep a close eye on service prices
 
 ## Quick Summary of Key Data
 
@@ -57,8 +57,9 @@ The central bank decided to keep interest rates unchanged at 8.25%. They want to
 
 **Things to watch:** Core inflation is still above target, and global uncertainty could affect your job or spending.
 
-**Next steps:** The central bank will continue monitoring prices and may adjust rates if needed.
+**Next steps:** The Contoso Bank will continue monitoring prices and may adjust rates if needed.
 
 ---
 
 *This bulletin summarizes economic conditions in Q4 2025. For more technical details, see the Economist version.*
+
