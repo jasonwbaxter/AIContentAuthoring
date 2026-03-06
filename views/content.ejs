@@ -144,23 +144,70 @@
       const content = document.querySelector('.article-body').innerText;
       const audioPanel = document.getElementById('audioPanel');
       const audioContent = document.getElementById('audioContent');
-      const audioPlayer = document.getElementById('audioPlayer');
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const currentLangCode = (pathParts[1] || currentLang || 'EN').toUpperCase();
+      const rawSlug = decodeURIComponent(pathParts[pathParts.length - 1] || '');
+      const currentSlug = rawSlug.replace(/\.md$/i, '');
+      const preGeneratedAudioBySlug = {
+        'quarterly-bulletin-q4-2025-enduser': 'quarterly-bulletin-q4-2025-enduser-audio.wav'
+      };
       
       audioPanel.style.display = 'block';
-      audioContent.innerHTML = '<p>Generating audio recap...</p>';
+      audioContent.innerHTML = '<p>Generating audio recap...</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
+
+      // Use pre-generated narration when available for this article.
+      if (preGeneratedAudioBySlug[currentSlug]) {
+        const audioFile = preGeneratedAudioBySlug[currentSlug];
+        const encodedAudioFile = encodeURIComponent(audioFile);
+        const primaryAudioUrl = '/content-audio/' + currentLangCode + '/' + encodedAudioFile;
+        const fallbackAudioUrl = '/content-audio/EN/' + encodedAudioFile;
+
+        let resolvedAudioUrl = '';
+        try {
+          const primaryCheck = await fetch(primaryAudioUrl, { method: 'HEAD' });
+          if (primaryCheck.ok) {
+            resolvedAudioUrl = primaryAudioUrl;
+          } else {
+            const fallbackCheck = await fetch(fallbackAudioUrl, { method: 'HEAD' });
+            if (fallbackCheck.ok) {
+              resolvedAudioUrl = fallbackAudioUrl;
+            }
+          }
+        } catch (checkError) {
+          // If availability checks fail, continue to API fallback below.
+        }
+
+        if (resolvedAudioUrl) {
+          audioContent.innerHTML = '<p>Audio recap ready</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
+          const audioPlayer = document.getElementById('audioPlayer');
+          audioPlayer.src = resolvedAudioUrl;
+          audioPlayer.load();
+          return;
+        }
+      }
       
       try {
         const response = await fetch('/api/audio-recap', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: content, language: currentLang })
+          body: JSON.stringify({
+            text: content,
+            language: currentLang,
+            pagePath: window.location.pathname
+          })
         });
         
         const data = await response.json();
-        audioContent.innerHTML = '<p>Audio recap ready</p>';
-        audioPlayer.src = data.audioUrl;
+        if (data && data.audioUrl) {
+          audioContent.innerHTML = '<p>Audio recap ready</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
+          const audioPlayer = document.getElementById('audioPlayer');
+          audioPlayer.src = data.audioUrl;
+          audioPlayer.load();
+        } else {
+          audioContent.innerHTML = '<p style="color: #666;">Audio recap is not available for this article yet.</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
+        }
       } catch (error) {
-        audioContent.innerHTML = '<p style="color: red;">Error generating audio: ' + error.message + '</p>';
+        audioContent.innerHTML = '<p style="color: red;">Error generating audio: ' + error.message + '</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
       }
     });
   </script>

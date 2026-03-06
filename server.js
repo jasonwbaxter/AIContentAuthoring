@@ -213,20 +213,73 @@ app.post('/api/summarize', express.json(), (req, res) => {
 
 // API: Generate audio recap
 app.post('/api/audio-recap', express.json(), (req, res) => {
-  const { text, language } = req.body;
+  const { text, language, pagePath } = req.body;
   
   if (!text) {
     return res.status(400).json({ error: 'Text is required' });
   }
+
+  const preGeneratedAudioBySlug = {
+    'quarterly-bulletin-q4-2025-enduser': 'quarterly-bulletin-q4-2025-enduser-audio.wav'
+  };
+
+  // Resolve a content-specific audio URL when a pre-generated narration exists.
+  const normalizedLanguage = String(language || 'EN').toUpperCase();
+  const pathMatch = String(pagePath || '').match(/^\/content\/([^/]+)\/(.+)$/i);
+  const pathLanguage = pathMatch ? String(pathMatch[1] || '').toUpperCase() : normalizedLanguage;
+  const pathFile = pathMatch ? decodeURIComponent(pathMatch[2] || '') : '';
+  const slug = path.basename(pathFile || '', '.md').toLowerCase();
+  const mappedAudioFile = preGeneratedAudioBySlug[slug];
+
+  if (mappedAudioFile) {
+    const candidateLangs = [pathLanguage, normalizedLanguage, 'EN'];
+
+    for (const candidateLang of candidateLangs) {
+      const languageDir = path.join(WEB_ROOT, candidateLang);
+      const fullPath = path.join(languageDir, mappedAudioFile);
+      if (fs.existsSync(fullPath)) {
+        return res.json({
+          audioUrl: `/content-audio/${candidateLang}/${encodeURIComponent(mappedAudioFile)}`,
+          message: 'Audio recap ready.'
+        });
+      }
+    }
+  }
   
   // Placeholder for audio generation
   // In production, this would call Azure Speech Services or similar
-  const audioUrl = '/audio/recap.mp3';
+  const audioUrl = null;
   
   res.json({ 
     audioUrl,
-    message: 'Audio recap generation started. Integrate with Azure Speech Services for actual audio synthesis.'
+    message: 'Audio recap is not available for this article yet. Integrate with Azure Speech Services for synthesis.'
   });
+});
+
+// Serve pre-generated content audio files
+app.get('/content-audio/:lang/:file', (req, res) => {
+  const lang = (req.params.lang || 'EN').toUpperCase();
+  const file = path.basename(req.params.file || '');
+  const ext = path.extname(file).toLowerCase();
+  const allowedExts = new Set(['.wav', '.mp3', '.m4a', '.ogg']);
+
+  if (!allowedExts.has(ext)) {
+    return res.status(400).json({ error: 'Unsupported audio format' });
+  }
+
+  const languageDir = path.join(WEB_ROOT, lang);
+  const fullPath = path.join(languageDir, file);
+
+  // Ensure resolved file remains inside the language directory
+  if (!fullPath.startsWith(languageDir)) {
+    return res.status(400).json({ error: 'Invalid file path' });
+  }
+
+  if (!fs.existsSync(fullPath)) {
+    return res.status(404).json({ error: 'Audio file not found' });
+  }
+
+  return res.sendFile(fullPath);
 });
 
 // ========== NAVIGATION STRUCTURE ==========
