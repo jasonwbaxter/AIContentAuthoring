@@ -219,21 +219,29 @@ app.post('/api/audio-recap', express.json(), (req, res) => {
     return res.status(400).json({ error: 'Text is required' });
   }
 
-  const preGeneratedAudioBySlug = {
-    'quarterly-bulletin-q4-2025-enduser': 'quarterly-bulletin-q4-2025-enduser-audio.wav'
-  };
-
   // Resolve a content-specific audio URL when a pre-generated narration exists.
   const normalizedLanguage = String(language || 'EN').toUpperCase();
   const pathMatch = String(pagePath || '').match(/^\/content\/([^/]+)\/(.+)$/i);
   const pathLanguage = pathMatch ? String(pathMatch[1] || '').toUpperCase() : normalizedLanguage;
   const pathFile = pathMatch ? decodeURIComponent(pathMatch[2] || '') : '';
   const slug = path.basename(pathFile || '', '.md').toLowerCase();
-  const mappedAudioFile = preGeneratedAudioBySlug[slug];
+  const slugCandidates = [slug];
+  if (slug.endsWith('-economist')) {
+    slugCandidates.push(slug.replace(/-economist$/, '-enduser'));
+  }
+  if (slug === 'quarterly-bulletin-q4-2025') {
+    slugCandidates.push('quarterly-bulletin-q4-2025-enduser');
+  }
 
-  if (mappedAudioFile) {
-    const candidateLangs = [pathLanguage, normalizedLanguage, 'EN'];
+  const audioFileCandidates = [];
+  for (const candidateSlug of slugCandidates) {
+    audioFileCandidates.push(`${candidateSlug}-Audio.wav`);
+    audioFileCandidates.push(`${candidateSlug}-audio.wav`);
+  }
 
+  const candidateLangs = [pathLanguage, normalizedLanguage, 'EN'];
+
+  for (const mappedAudioFile of audioFileCandidates) {
     for (const candidateLang of candidateLangs) {
       const languageDir = path.join(WEB_ROOT, candidateLang);
       const fullPath = path.join(languageDir, mappedAudioFile);

@@ -203,6 +203,10 @@ async function loadUserTypeContent(isTechnical) {
       const currentContent = document.querySelector('.article-body');
       if (currentContent) {
         currentContent.innerHTML = newContent.innerHTML;
+
+        // Keep the active article slug in sync for features that derive file names (for example audio recap).
+        window.__loadedMarkdownSlug = markdownFile;
+        window.history.replaceState(null, '', newPath);
         
         // Scroll to top of article smoothly
         const articleElement = document.querySelector('.article');

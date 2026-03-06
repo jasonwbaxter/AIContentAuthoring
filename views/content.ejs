@@ -146,18 +146,38 @@
       const audioContent = document.getElementById('audioContent');
       const pathParts = window.location.pathname.split('/').filter(Boolean);
       const currentLangCode = (pathParts[1] || currentLang || 'EN').toUpperCase();
-      const rawSlug = decodeURIComponent(pathParts[pathParts.length - 1] || '');
-      const currentSlug = rawSlug.replace(/\.md$/i, '');
-      const preGeneratedAudioBySlug = {
-        'quarterly-bulletin-q4-2025-enduser': 'quarterly-bulletin-q4-2025-enduser-audio.wav'
-      };
+      const rawSlug = decodeURIComponent((pathParts[pathParts.length - 1] || '').split(/[?#]/)[0]);
+      const urlSlug = rawSlug.replace(/\.md$/i, '').toLowerCase();
+      const activeSlug = String(window.__loadedMarkdownSlug || urlSlug).replace(/\.md$/i, '').toLowerCase();
+
+      function getAudioFileCandidates(slug) {
+        const sanitizedSlug = String(slug || '').toLowerCase();
+        const slugCandidates = [sanitizedSlug];
+
+        // Fallback to end-user audio when the technical variant has no dedicated narration.
+        if (sanitizedSlug.endsWith('-economist')) {
+          slugCandidates.push(sanitizedSlug.replace(/-economist$/, '-enduser'));
+        }
+
+        if (sanitizedSlug === 'quarterly-bulletin-q4-2025') {
+          slugCandidates.push('quarterly-bulletin-q4-2025-enduser');
+        }
+
+        const fileCandidates = [];
+        for (const candidateSlug of slugCandidates) {
+          fileCandidates.push(candidateSlug + '-Audio.wav');
+          fileCandidates.push(candidateSlug + '-audio.wav');
+        }
+
+        return fileCandidates;
+      }
       
       audioPanel.style.display = 'block';
       audioContent.innerHTML = '<p>Generating audio recap...</p><audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>';
 
       // Use pre-generated narration when available for this article.
-      if (preGeneratedAudioBySlug[currentSlug]) {
-        const audioFile = preGeneratedAudioBySlug[currentSlug];
+      const audioFileCandidates = getAudioFileCandidates(activeSlug);
+      for (const audioFile of audioFileCandidates) {
         const encodedAudioFile = encodeURIComponent(audioFile);
         const primaryAudioUrl = '/content-audio/' + currentLangCode + '/' + encodedAudioFile;
         const fallbackAudioUrl = '/content-audio/EN/' + encodedAudioFile;
